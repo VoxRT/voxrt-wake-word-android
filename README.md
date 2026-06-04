@@ -91,8 +91,41 @@ SHA-256: `9d40bdc132a2ad8e85bd8a28bb49b77c51a7c62f60567222a037e44418510e8f`
 
 You decide where it lives. Two common patterns for an ~100 KB asset:
 
-- **Bundle in app assets** — drop `voxrt_wake_word.vxrt` into `app/src/main/assets/`. Smallest engineering overhead.
-- **Download on first run** — fetch into `context.filesDir`. Lets you swap models without an app update.
+- **Bundle in app assets** — drop `voxrt_wake_word.vxrt` into `app/src/main/assets/` and load with `VoxrtWakeWordEngine.fromAssetBytes(context.assets, "voxrt_wake_word.vxrt")`. Smallest engineering overhead, works offline from first launch.
+- **Download on first run** — fetch into `context.filesDir`, verify the SHA-256, then load with `VoxrtWakeWordEngine.fromBytes(...)`. Lets you swap models without an app update; requires `<uses-permission android:name="android.permission.INTERNET" />` in your manifest.
+
+### Download-on-first-run snippet
+
+```kotlin
+private const val MODEL_URL =
+    "https://github.com/VoxRT/voxrt-wake-word-models/releases/download/v0.1.0/voxrt_wake_word.vxrt"
+private const val MODEL_SHA256 = "9d40bdc132a2ad8e85bd8a28bb49b77c51a7c62f60567222a037e44418510e8f"
+
+fun ensureModel(ctx: Context): ByteArray {
+    val cached = java.io.File(ctx.filesDir, "voxrt_wake_word.vxrt")
+    if (cached.exists() && sha256(cached.readBytes()) == MODEL_SHA256) {
+        return cached.readBytes()
+    }
+    val conn = (java.net.URL(MODEL_URL).openConnection() as java.net.HttpURLConnection).apply {
+        instanceFollowRedirects = true
+        connectTimeout = 15_000
+        readTimeout = 60_000
+    }
+    val bytes = conn.inputStream.use { it.readBytes() }
+    conn.disconnect()
+    check(sha256(bytes) == MODEL_SHA256) { "model SHA-256 mismatch" }
+    cached.writeBytes(bytes)
+    return bytes
+}
+
+private fun sha256(b: ByteArray): String =
+    java.security.MessageDigest.getInstance("SHA-256")
+        .digest(b).joinToString("") { "%02x".format(it) }
+
+// Then, off the main thread:
+val bytes = ensureModel(context)
+val engine = VoxrtWakeWordEngine.fromBytes(bytes)
+```
 
 ## Quick start
 
