@@ -1,0 +1,93 @@
+VoxRT Binary Use License
+
+Copyright (c) 2026 Elephant Enterprises LLC (d/b/a VoxRT).
+
+This license covers the compiled artifacts distributed with this
+Kotlin library:
+
+  voxrt-wake-word/src/main/jniLibs/arm64-v8a/libvoxrt_wake_word.so
+  voxrt-wake-word/src/main/jniLibs/x86_64/libvoxrt_wake_word.so
+
+These binaries are proprietary code owned by Elephant Enterprises LLC.
+By using them you agree to the following.
+
+1. PERMITTED USES
+
+   You may use, link against, and redistribute these binaries as an
+   unmodified part of the official voxrt-wake-word-android Kotlin
+   library at the version they were resolved from (the Git tag whose
+   commit produced the AAR your build is consuming, via JitPack or
+   any future Maven coordinate).
+
+   Redistribution in your own Android applications — including
+   commercial Play Store apps — is permitted without per-installation
+   fees, royalties, or registration, for the on-device wake-phrase
+   detection task the binaries are built for.
+
+   You may run the binaries on production user devices.
+
+2. RESTRICTIONS
+
+   You may not:
+
+   (a) Modify, repackage, or relink the binaries outside the
+       unmodified official voxrt-wake-word-android Kotlin library.
+
+   (b) Reverse engineer, decompile, disassemble, or otherwise attempt
+       to derive the source code, the embedded model weights, the
+       embedded master key, or other internal state of the binaries.
+
+   (c) Bypass, defeat, or remove any technical protection mechanism
+       used by the binaries, including (without limitation) the
+       AES-256-GCM weight encryption (per ADR-0023), the XOR-masked
+       master key, and the JNI symbol-table hardening described in
+       ADR-0016 (RegisterNatives + obfstr).
+
+   (d) Use the binaries to load or decrypt model files (`.vxrt` or
+       any other format) that were not published by Elephant
+       Enterprises LLC or that you are not authorized to use.
+
+3. WAKE-PHRASE MODEL WEIGHTS
+
+   The wake-phrase model weights packaged separately as
+   `voxrt_wake_word.vxrt` (distributed via the voxrt-wake-word-models
+   repository) are produced entirely in-house by Elephant Enterprises
+   LLC on 100% synthetic training data — no upstream copyleft or
+   attribution obligations attach to the weights themselves. The
+   `.vxrt` artefact is licensed under the same proprietary terms as
+   the binaries above.
+
+4. NO WARRANTY
+
+   THE BINARIES ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+   NONINFRINGEMENT. IN NO EVENT SHALL ELEPHANT ENTERPRISES LLC BE
+   LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM
+   YOUR USE OF THE BINARIES.
+
+5. COMMERCIAL INTEGRATION
+
+   The default voxrt-wake-word library ships the single wake phrase
+   "Hey Assistant" as a free preview. Custom wake phrases (your own
+   brand name, multi-phrase detection, language extension) are part
+   of the commercial VoxRT SDK tier. Contact help@voxrt.com for
+   custom-phrase model training, commercial integration support, or
+   licensing terms beyond those described above.
+
+6. GOVERNING LAW
+
+   This License is governed by the laws of the State of Delaware,
+   United States of America, without regard to its conflict-of-laws
+   provisions.
+
+7. ENTIRE AGREEMENT
+
+   This License is the entire agreement between you and Elephant
+   Enterprises LLC concerning the binaries. It supersedes any prior
+   discussions or oral statements.
+
+Elephant Enterprises LLC may revise this License in future releases.
+Pin a specific version of voxrt-wake-word-android in your
+build.gradle.kts to keep the License terms you accepted stable across
+upgrades.

@@ -1,0 +1,13 @@
+# JitPack build configuration.
+# JitPack auto-publishes from this repo when a tag is pushed.
+# Consumers use:
+#   implementation("com.github.VoxRT:voxrt-wake-word-android:vX.Y.Z")
+
+jdk:
+  - openjdk17
+
+# Use the bundled Gradle wrapper. JitPack's system Gradle is 4.8.1
+# (way too old for AGP 8.5), so the wrapper is the only reliable way
+# to pin a recent Gradle (8.7 via gradle/wrapper/gradle-wrapper.properties).
+install:
+  - ./gradlew :voxrt-wake-word:publishToMavenLocal

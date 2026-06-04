@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Empty manifest. The library defines no components and requires
+         no permissions on its own — the consumer app declares
+         RECORD_AUDIO (or any audio-related permission) since this
+         library is agnostic to how PCM is sourced. -->
+</manifest>
