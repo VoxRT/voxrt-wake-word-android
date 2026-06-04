@@ -42,9 +42,9 @@ Measured at ship time, `arm64-v8a` release builds, post-warmup, RTF = wall-time-
 | -------------------------------------------- | -------------- | ---------------------------- | --------- |
 | Xiaomi Redmi 9C (SD 662, Cortex-A73)         | midrange-2020  | scheduler default            | **0.021** |
 | Xiaomi Redmi 9C (SD 662, Cortex-A73)         | midrange-2020  | `CpuAffinity.HIGH_PERF` pin  | **0.021** |
-| Xiaomi Redmi 9C (SD 662, Cortex-A53)         | midrange-2020  | LITTLE cluster (`LOW_POWER`) | 0.182     |
+| Xiaomi Redmi 9C (SD 662, Cortex-A53)         | midrange-2020  | LITTLE cluster (`LOW_POWER`) | 0.071     |
 
-At RTF ≈ 0.02 the wake-word is ~50× faster than realtime on a 5-year-old midrange SoC — well within an always-on power budget. Pin the engine thread to the perf cluster (`CpuAffinity.HIGH_PERF`) on big.LITTLE chips to keep RTF stable; the scheduler otherwise migrates the audio thread to a LITTLE core under sustained load.
+At RTF ≈ 0.02 the wake-word is ~50× faster than realtime on a 5-year-old midrange SoC — well within an always-on power budget. Even on the LITTLE cluster (Cortex-A53), RTF stays at 0.07 — wake-word survives a thermally-throttled phone gracefully. Pin the engine thread to the perf cluster (`CpuAffinity.HIGH_PERF`) on big.LITTLE chips to keep latency stable; the scheduler otherwise migrates the audio thread to a LITTLE core under sustained load.
 
 ## Binary footprint
 
