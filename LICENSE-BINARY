@@ -1,6 +1,6 @@
 VoxRT Binary Use License
 
-Copyright (c) 2026 Elephant Enterprises LLC (d/b/a VoxRT).
+Copyright (c) 2026 Wiseport Ltd. (trading as VoxRT).
 
 This license covers the compiled artifacts distributed with this
 Kotlin library:
@@ -8,21 +8,18 @@ Kotlin library:
   voxrt-wake-word/src/main/jniLibs/arm64-v8a/libvoxrt_wake_word.so
   voxrt-wake-word/src/main/jniLibs/x86_64/libvoxrt_wake_word.so
 
-These binaries are proprietary code owned by Elephant Enterprises LLC.
+These binaries are proprietary code owned by Wiseport Ltd.
 By using them you agree to the following.
 
 1. PERMITTED USES
 
-   You may use, link against, and redistribute these binaries as an
-   unmodified part of the official voxrt-wake-word-android Kotlin
-   library at the version they were resolved from (the Git tag whose
-   commit produced the AAR your build is consuming, via JitPack or
-   any future Maven coordinate).
-
-   Redistribution in your own Android applications — including
-   commercial Play Store apps — is permitted without per-installation
-   fees, royalties, or registration, for the on-device wake-phrase
-   detection task the binaries are built for.
+   You may use and link against the binaries, and may reproduce and
+   redistribute unmodified copies of the binaries solely as incorporated
+   into applications or products that use the voxrt-wake-word-android
+   SDK, including commercial applications distributed through app stores
+   such as Google Play, without per-installation fees, royalties, or
+   registration, for the on-device wake-phrase detection task the
+   binaries are built for.
 
    You may run the binaries on production user devices.
 
@@ -30,8 +27,9 @@ By using them you agree to the following.
 
    You may not:
 
-   (a) Modify, repackage, or relink the binaries outside the
-       unmodified official voxrt-wake-word-android Kotlin library.
+   (a) Distribute the binaries on a standalone basis, repackage them as
+       part of another SDK or runtime, or modify or relink the binaries
+       except as expressly permitted by this License.
 
    (b) Reverse engineer, decompile, disassemble, or otherwise attempt
        to derive the source code, the embedded model weights, the
@@ -43,28 +41,52 @@ By using them you agree to the following.
        master key, and the JNI symbol-table hardening described in
        ADR-0016 (RegisterNatives + obfstr).
 
-   (d) Use the binaries to load or decrypt model files (`.vxrt` or
-       any other format) that were not published by Elephant
-       Enterprises LLC or that you are not authorized to use.
+   (d) Use the binaries to load or decrypt model files (`.vxrt` or any
+       other format) that were not published by Wiseport Ltd. or that
+       you are not authorized to use.
+
+   Nothing in this Section 2 restricts any act that applicable law
+   expressly permits notwithstanding a contractual restriction,
+   including acts permitted under Directive 2009/24/EC on the legal
+   protection of computer programs as implemented in Cyprus.
 
 3. WAKE-PHRASE MODEL WEIGHTS
 
    The wake-phrase model weights packaged separately as
    `voxrt_wake_word.vxrt` (distributed via the voxrt-wake-word-models
-   repository) are produced entirely in-house by Elephant Enterprises
-   LLC on 100% synthetic training data — no upstream copyleft or
-   attribution obligations attach to the weights themselves. The
-   `.vxrt` artefact is licensed under the same proprietary terms as
-   the binaries above.
+   repository) are proprietary to Wiseport Ltd. and are not derived from
+   third-party model checkpoints subject to attribution or copyleft
+   requirements. The separately distributed `voxrt_wake_word.vxrt` model
+   is governed by the VoxRT Wake-Word Model License included in the
+   voxrt-wake-word-models repository. This Binary Use License governs
+   only the VoxRT runtime binaries.
 
 4. NO WARRANTY
+
+   THE SOFTWARE, MODELS, AND THEIR OUTPUTS ARE STATISTICAL AND MAY
+   PRODUCE INCORRECT, INCOMPLETE, DELAYED, OR FAILED RESULTS. THEY ARE
+   NOT DESIGNED, TESTED, CERTIFIED, OR WARRANTED AS THE SOLE OR PRIMARY
+   MECHANISM FOR SAFETY-CRITICAL OR EMERGENCY FUNCTIONS, INCLUDING,
+   WITHOUT LIMITATION, PERSONAL-SAFETY AND EMERGENCY-RESPONSE
+   APPLICATIONS, LIFE-SUPPORT SYSTEMS, AUTONOMOUS VEHICLES, NUCLEAR
+   FACILITIES, WEAPONS SYSTEMS, OR AIR TRAFFIC CONTROL. IF YOU
+   INCORPORATE THEM INTO SUCH AN APPLICATION YOU DO SO AT YOUR OWN RISK
+   AND ARE SOLELY RESPONSIBLE FOR DETERMINING SUITABILITY, VALIDATING
+   PERFORMANCE, IMPLEMENTING APPROPRIATE SAFEGUARDS AND REDUNDANCY,
+   REGULATORY COMPLIANCE, AND THE OVERALL SAFETY OF YOUR APPLICATION.
+   WISEPORT LTD. MAKES NO REPRESENTATION THAT THEY ARE SUITABLE FOR ANY
+   SAFETY-CRITICAL USE.
 
    THE BINARIES ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
-   NONINFRINGEMENT. IN NO EVENT SHALL ELEPHANT ENTERPRISES LLC BE
-   LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM
-   YOUR USE OF THE BINARIES.
+   NONINFRINGEMENT. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW,
+   IN NO EVENT SHALL WISEPORT LTD. BE LIABLE FOR ANY CLAIM, DAMAGES, OR
+   OTHER LIABILITY ARISING FROM YOUR USE OF THE BINARIES.
+
+   NOTHING IN THIS LICENSE EXCLUDES OR LIMITS ANY LIABILITY THAT CANNOT
+   BE EXCLUDED OR LIMITED UNDER APPLICABLE LAW, INCLUDING LIABILITY FOR
+   DEATH OR PERSONAL INJURY CAUSED BY NEGLIGENCE OR FOR FRAUD.
 
 5. COMMERCIAL INTEGRATION
 
@@ -77,17 +99,26 @@ By using them you agree to the following.
 
 6. GOVERNING LAW
 
-   This License is governed by the laws of the State of Delaware,
-   United States of America, without regard to its conflict-of-laws
-   provisions.
+   This License is governed by the laws of the Republic of Cyprus,
+   without regard to its conflict-of-laws provisions. The courts of the
+   Republic of Cyprus have exclusive jurisdiction over any dispute
+   arising out of or in connection with this License, without prejudice
+   to any mandatory rights you have under the law of your country of
+   residence.
 
 7. ENTIRE AGREEMENT
 
-   This License is the entire agreement between you and Elephant
-   Enterprises LLC concerning the binaries. It supersedes any prior
-   discussions or oral statements.
+   This License constitutes the entire agreement between you and
+   Wiseport Ltd. concerning your use of the binaries unless you and
+   Wiseport Ltd. enter into a separate written agreement expressly
+   governing such use. It supersedes any prior discussions or oral
+   statements. This License governs the binaries notwithstanding any
+   inconsistent general description on voxrt.com. The voxrt.com Terms of
+   Service do not govern your use of the binaries; those Terms may
+   separately govern your use of the VoxRT website and other services
+   expressly subject to them.
 
-Elephant Enterprises LLC may revise this License in future releases.
+Wiseport Ltd. may revise this License in future releases.
 Pin a specific version of voxrt-wake-word-android in your
 build.gradle.kts to keep the License terms you accepted stable across
 upgrades.

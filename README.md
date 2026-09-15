@@ -6,7 +6,7 @@ Always-on wake-phrase detection on the **VoxRT** custom on-device inference runt
 - Minimum Android: API 26 (Android 8.0)
 - ABIs shipped: `arm64-v8a` (NEON-accelerated), `x86_64` (scalar, emulator only)
 - License: Apache-2.0 (Kotlin wrapper) · proprietary (compiled runtime, redistribution allowed via this artifact)
-- Wake-phrase weights: proprietary in-house (synthetic training data; no upstream license obligations)
+- Wake-phrase weights: proprietary to Wiseport Ltd.; not derived from third-party model checkpoints subject to attribution or copyleft requirements
 
 ---
 
@@ -56,7 +56,7 @@ The on-device wake-word category is dominated by Picovoice Porcupine on the paid
 | Mobile RTF disclosed | ✅ measured on Snapdragon 662 + iPhone | ❌ Raspberry Pi 5 only (0.6 % CPU; ~1.8 % scaled to SD662) | ❌ Raspberry Pi 3 only |
 | Accuracy headline | ROC AUC 0.9966 on "Hey Assistant"; precision 0.993 / recall 0.982 @ default threshold | 2.7 % miss rate averaged across 6 built-in keywords (alexa, computer, jarvis, smart mirror, snowboy, view glass) | varies per pretrained model |
 | Native mobile SDK | ✅ Android JitPack + iOS SPM | ✅ Android + iOS + RN + Flutter | ❌ Python-only; community C++ port |
-| License | Apache-2.0 wrapper + proprietary runtime + proprietary weights (redistribution allowed as an unmodified part of this SDK, no per-seat fees) | Commercial (Free Plan evaluation-only; production tier opaque, sales-gated) | Apache-2.0 code, **CC-BY-NC-SA** on pretrained weights (non-commercial) |
+| License | Apache-2.0 wrapper + proprietary runtime + proprietary weights (the unmodified runtime may be incorporated and redistributed in your applications, no per-seat fees) | Commercial (Free Plan evaluation-only; production tier opaque, sales-gated) | Apache-2.0 code, **CC-BY-NC-SA** on pretrained weights (non-commercial) |
 | Custom phrase / language | Tuned per customer on request (paid engagement) | Via Picovoice Console — paid tier required for commercial deployment | Self-train via Colab + TTS (~1 hour) |
 
 On raw speed and accuracy we're near-tie with Porcupine (their 2.7 % miss rate is a real benchmark; our ~100 KB model is genuinely tiny). The clear differentiators are **license clarity** (no per-seat fees, commercial redistribution allowed as part of this SDK vs Picovoice opaque pricing vs openWakeWord NC-blocked weights), **measured mobile RTF** (no other vendor publishes one for cheap Android), and a **~100 KB** model file.
@@ -296,4 +296,4 @@ object CpuAffinity {
 - **Compiled runtime** (`libvoxrt_wake_word.so`): proprietary, redistributable under the terms in [`LICENSE-BINARY`](LICENSE-BINARY).
 - **Wake-phrase model** (`voxrt_wake_word.vxrt`): proprietary, distributed separately under the [`voxrt-wake-word-models`](https://github.com/VoxRT/voxrt-wake-word-models) license terms.
 
-For commercial integration, custom phrase models, or licensing terms beyond redistribution of the unmodified library, contact help@voxrt.com.
+For commercial integration, custom phrase models, or licensing terms beyond incorporating the unmodified runtime into your own applications, contact help@voxrt.com.
